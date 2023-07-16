@@ -6,5 +6,5 @@
 - Score 50 points when catching the presents
 - Catching the bottle will knock -3 points off
 ## This game is dedicated to my brother Josh, Happy Birthday Josh
-
-By - Elizabeth Salako
+Written in JavaScript, HTML5, and CSS3
+Want to play this game, feel free fee [try](https://lizsalako.github.io/Birthday-game/)!
