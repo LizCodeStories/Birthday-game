@@ -7,4 +7,5 @@
 - Catching the bottle will knock -3 points off
 ## This game is dedicated to my brother Josh, Happy Birthday Josh
 Written in JavaScript, HTML5, and CSS3
+## Play this game
 Want to play this game, feel free fee [try](https://lizsalako.github.io/Birthday-game/)!
