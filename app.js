@@ -53,18 +53,18 @@ const bottleSpeed = 11;
 }
 
  drawJosh = () => {
-  ctx.save(); // Save the current canvas state
+  ctx.save(); 
 
   if (joshX + joshWidth / 2 < canvas.width / 2) {
-    // If Josh is moving to the left, flip the image horizontally
-    ctx.scale(-1, 1); // Flip horizontally
+   
+    ctx.scale(-1, 1); 
     ctx.drawImage(joshImage, -joshX - joshWidth, joshY, joshWidth, joshHeight);
   } else {
-    // Otherwise, draw Josh normally
+ 
     ctx.drawImage(joshImage, joshX, joshY, joshWidth, joshHeight);
   }
 
-  ctx.restore(); // Restore the previous canvas state
+  ctx.restore(); 
 }
 
 
@@ -73,20 +73,20 @@ const bottleSpeed = 11;
     ctx.drawImage(bottleImage, bottleX, bottleY, bottleWidth, bottleHeight);
     bottleY += bottleSpeed;
   
-    // Reset bottle position if it goes off the screen
+   
     if (bottleY > canvas.height) {
       bottleY = -bottleHeight;
       bottleX = Math.random() * (canvas.width - bottleWidth); // Randomize bottle's X position
     }
   
-    // Check for collision between Josh and the bottle
+    
     if (
       joshY < bottleY + bottleHeight &&
       joshY + joshHeight > bottleY &&
       joshX < bottleX + bottleWidth &&
       joshX + joshWidth > bottleX
     ) {
-      // Collision detected
+
       handleBottleCollision();
     }
   }
@@ -98,7 +98,6 @@ const bottleSpeed = 11;
     presentY += presentSpeed;
     presentX -= presentSpeed;
   
-    // Reset present position if it goes off the screen
     if (presentY > canvas.height) {
       presentY = -presentHeight;
     }
@@ -106,7 +105,7 @@ const bottleSpeed = 11;
       presentX = canvas.width;
     }
     
-    // Check for collision between Josh and the present
+   
     if (
       joshY < presentY + presentHeight &&
       joshY + joshHeight > presentY &&
@@ -115,15 +114,15 @@ const bottleSpeed = 11;
     ) 
     presentVisible = true;
     {
-      // Collision detected
+    
       collectPresent();
     }
   
-    // Reset present position if it goes off the screen
+    
     if (presentY > canvas.height) {
       presentY = -presentHeight;
     }
-    // Draw score text on canvas
+ 
   ctx.font = '30px Arial';
   ctx.fillStyle = 'white';
   ctx.fillText(`Points: ${score}`, 10, 50);
@@ -137,57 +136,54 @@ const bottleSpeed = 11;
   
   
   collectPresent = () => {
-    // Only allow score to increment if present is visible
+  
     if (!presentVisible) {
       return;
     }
-    presentY = -presentHeight; // Move the present off-screen
-    score++; // Increment the score
+    presentY = -presentHeight; 
+    score++; 
   
-    presentVisible = false; // Mark present as collected
+    presentVisible = false; 
   
     if (score >= 50) {
-      // Win condition
       gameWin = true;
       gameOver = true;
     } else if (score === 0) {
-      // Game over condition
+      
       gameOver = true;
     }
   }
   
   
   updateJosh = () => {
-    // Apply gravity to Josh's vertical speed
+    
     joshYSpeed += joshGravity;
     joshY += joshYSpeed;
-  
-    // Prevent Josh from going below the ground
+
     if (joshY > canvas.height - joshHeight) {
       joshY = canvas.height - joshHeight;
       joshYSpeed = 0;
     }
   
-    // Prevent Josh from going off the left side of the screen
+ 
     if (joshX < 0) {
       joshX = 0;
     }
   
-    // Prevent Josh from going off the right side of the screen
+  
     if (joshX > canvas.width - joshWidth) {
       joshX = canvas.width - joshWidth;
     }
   }
-  // Add the handleJump function to handle jumping
+
 handleJump = () => {
   if (joshY === canvas.height - joshHeight) {
-    // Only allow jumping if Josh is on the ground
+ 
     joshYSpeed = joshJumpForce;
   }
 }
 
-  
-  // Update the keydown event listener to handle left and right movement with boundary checks
+
   document.addEventListener('keydown', function(event) {
     if (event.code === 'ArrowUp' || event.code === 'Space') {
       handleJump();
@@ -206,7 +202,7 @@ handleJump = () => {
     }
   });
 
-  // Needs work?
+
   
     
     
@@ -218,17 +214,16 @@ handleJump = () => {
         score = 0;
       }
     
-    
-      // Reset bottle position
+  
       bottleY = -bottleHeight;
-      bottleX = Math.random() * (canvas.width - bottleWidth); // Randomize bottle's X position
+      bottleX = Math.random() * (canvas.width - bottleWidth); 
     }
     
     
 
     animate = () => {
       if (!gameRunning) {
-        return; // Exit the function if the game is not running
+        return; 
       }
       drawBackground();
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -242,7 +237,7 @@ handleJump = () => {
         requestAnimationFrame(animate);
       } else {
         if (gameWin) {
-          // Draw "Happy birthday Josh" text
+  
           ctx.font = '60px Arial';
           ctx.fillStyle = 'white';
           ctx.fillText('Happy Birthday Josh!', 300, 300);
@@ -252,15 +247,14 @@ handleJump = () => {
           gameRunning = false;
         }
       }
-    
-        // Clear the bottle and present
+
         bottleY = -bottleHeight;
         presentY = -presentHeight;
       }
     }
     
     
-// Set up keyboard input
+
 document.addEventListener('keydown', function(event) {
   if (event.code === 'ArrowUp' || event.code === 'Space') {
     handleJump();
@@ -277,28 +271,25 @@ document.addEventListener('keydown', function(event) {
 });
 
 
-// Set up score display 
 scoreText = document.createElement('div');
 document.body.appendChild(scoreText);
 
 
 
-// Function to start the game
 startGame = () => {
   if (!gameStarted) {
     gameStarted = true;
-    gameRunning = true; // Set the game to running state
+    gameRunning = true; 
     drawBackground();
     animate();
-    
-    // Add animating class to start button
+
     startButton.classList.add('animating');
     const title = document.querySelector('.title');
     title.style.display = 'none';
   }
 }
 
-// Function to toggle the visibility of the instructions
+
 toggleInstructions = () => {
   const instructionsContainer = document.querySelector('.instructions-container');
   if (instructionsContainer.style.display === 'none') {
@@ -309,19 +300,17 @@ toggleInstructions = () => {
 }
 
 
-
-// Add event listener to the start button
 const startButton = document.getElementById('start');
 startButton.addEventListener('click', startGame);
 
 
-// hide the start button when the user clicks on it
+
 startButton.addEventListener('click', function() {
   startButton.style.display = 'none';
 });
 
 
 
-drawBackground(); // Add this line to call the drawBackground() function
+drawBackground(); 
 animate();
 
