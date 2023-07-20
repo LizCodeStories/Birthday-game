@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Belanosima:wght@600&family=Lexend:wght@500&family=Libre+Franklin:wght@400;600&family=Lilita+One&family=Manrope:wght@400;500&family=Montserrat+Alternates:wght@600&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -8,17 +10,24 @@ body {
     margin: 0;
     padding: 0;
     overflow: hidden;
+
 }
+
 
 .title { 
     text-align: center;
     color: #fff;
+    font-family: 'Lilita One', cursive;
+  font-size: 3rem;
+}
+
+#message {
+  font-family: 'Libre Franklin', sans-serif;
+  font-weight: 600;
 }
 
 
 /* Canvas */
-  
-
 canvas {
     display: block;
     position: absolute;
@@ -54,8 +63,9 @@ canvas {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        font-family: 'Press Start 2P', cursive;
+        font-family: 'Montserrat Alternates', sans-serif;
         font-size: 2rem;
+        font-family: 'Belanosima', sans-serif;
         color: #fff;
         text-align: center;
         cursor: pointer;
@@ -90,7 +100,9 @@ canvas {
       
   
   #instructions {
-    font-size: 1rem;
+      font-size: 1rem;
+      font-family: 'Manrope', sans-serif;
+      font-weight: 600;
         color: #fff;
         text-align: center;
         cursor: pointer;
@@ -102,3 +114,29 @@ canvas {
         transition: background-color 0.3s ease;
   }
 
+  #instructions {
+    font-size: 1rem;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    padding: 10px 20px;
+    background-color: #ff7f50;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease;
+}
+
+#instructions-text {
+    font-size: 1rem;
+    font-family: 'Libre Franklin', sans-serif;
+    color: #fff;
+    text-align: center;
+    padding: 10px 20px;
+    background-color: #ff7f50;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    display: none;
+    margin: 10px 0;
+}

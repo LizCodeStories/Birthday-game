@@ -37,7 +37,7 @@ const presentWidth = 100;
 const presentHeight = 100;
 let presentY = 0;
 let presentX = 800;
-const presentSpeed = 7;
+const presentSpeed = 6;
 
 const bottleImage = new Image();
 bottleImage.src = 'bottle2.png';
@@ -45,7 +45,7 @@ const bottleWidth = 30;
 const bottleHeight = 100;
 let bottleY = 0;
 let bottleX = 800;
-const bottleSpeed = 11;
+const bottleSpeed = 8;
 
 
  drawBackground = () => {
@@ -202,10 +202,19 @@ handleJump = () => {
     }
   });
 
+// Palse game when user clicks on the screen and start the game when user loads the game
+document.addEventListener('keydown', function(event) {
+  if (event.code === 'ArrowDown') {
+    if (gameRunning) {
+      gameRunning = false;
+    } else {
+      gameRunning = true;
+      animate();
+    }
+  }
+});
 
-  
-    
-    
+
     // Villan collision
      handleBottleCollision = () => {
       // Subtract 3 points from the score when Josh catches the bottle
@@ -274,6 +283,13 @@ document.addEventListener('keydown', function(event) {
 scoreText = document.createElement('div');
 document.body.appendChild(scoreText);
 
+hideInstructions = () => {
+  const instructionsButton = document.getElementById('instructions');
+  const instructionsText = document.getElementById('instructions-text');
+  instructionsButton.style.display = 'none';
+  instructionsText.style.display = 'none';
+}
+
 
 
 startGame = () => {
@@ -286,6 +302,10 @@ startGame = () => {
     startButton.classList.add('animating');
     const title = document.querySelector('.title');
     title.style.display = 'none';
+
+    hideInstructions();
+   
+
   }
 }
 
@@ -308,6 +328,20 @@ startButton.addEventListener('click', startGame);
 startButton.addEventListener('click', function() {
   startButton.style.display = 'none';
 });
+
+
+toggleInstructions = () => {
+  const instructionsText = document.getElementById('instructions-text');
+  if (instructionsText.style.display === 'none') {
+      instructionsText.style.display = 'block';
+  } else {
+      instructionsText.style.display = 'none';
+  }
+}
+
+const instructionsButton = document.getElementById('instructions');
+instructionsButton.addEventListener('click', toggleInstructions);
+
 
 
 
