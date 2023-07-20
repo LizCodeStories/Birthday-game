@@ -26,6 +26,12 @@ body {
   font-weight: 600;
 }
 
+#warning {
+  font-family: 'Libre Franklin', sans-serif;
+  font-weight: 600;
+  color: #620f00;
+}
+
 
 /* Canvas */
 canvas {
