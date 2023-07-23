@@ -10,3 +10,5 @@
 Written in JavaScript, HTML5, and CSS3
 ## Play this game
 Want to play this game, feel free to [try](https://lizsalako.github.io/Birthday-game/)!
+## iPad or tablet friendly
+Players can use their iPad and tablet devices to play since it's also touchscreen
