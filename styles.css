@@ -47,10 +47,7 @@ canvas {
     background-repeat: no-repeat;
     background-attachment: fixed;
     z-index: -1;
-    
-  /* add animation to canvas when page loads */
     animation: fadeIn 2s ease-in-out forwards;
-
   }
 
     @keyframes fadeIn {
@@ -133,6 +130,10 @@ canvas {
     transition: background-color 0.3s ease;
 }
 
+#instructions:hover {
+    background-color: #ff6347;
+}
+
 #instructions-text {
     font-size: 1rem;
     font-family: 'Libre Franklin', sans-serif;
@@ -145,4 +146,73 @@ canvas {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     display: none;
     margin: 10px 0;
+}
+
+
+/* ipad mini */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    canvas {
+        width: 100%;
+        height: 100%;
+    }
+    #start {
+        font-size: 1.5rem;
+    }
+    #instructions {
+        font-size: 1rem;
+    }
+    #instructions-text {
+        font-size: 1rem;
+    }
+}
+
+/* ipad air */
+@media only screen and (min-width: 1024px) and (max-width: 1366px) {
+    canvas {
+        width: 100%;
+        height: 100%;
+    }
+    #start {
+        font-size: 1.5rem;
+    }
+    #instructions {
+        font-size: 1rem;
+    }
+    #instructions-text {
+        font-size: 1rem;
+    }
+}
+
+/* ipad pro */
+@media only screen and (min-width: 1366px) and (max-width: 1366px) {
+    canvas {
+        width: 100%;
+        height: 100%;
+    }
+    #start {
+        font-size: 1.5rem;
+    }
+    #instructions {
+        font-size: 1rem;
+    }
+    #instructions-text {
+        font-size: 1rem;
+    }
+}
+
+/* surface duo */
+@media only screen and (min-width: 540px) and (max-width: 720px) {
+    canvas {
+        width: 100%;
+        height: 100%;
+    }
+    #start {
+        font-size: 1.5rem;
+    }
+    #instructions {
+        font-size: 1rem;
+    }
+    #instructions-text {
+        font-size: 1rem;
+    }
 }

@@ -211,6 +211,10 @@ document.addEventListener('keydown', function(event) {
       gameRunning = true;
       animate();
     }
+    //add text to the screen
+    ctx.font = '40px Arial';
+    ctx.fillStyle = 'white';
+    ctx.fillText('Press the same key to resume', 350, 300);
   }
 });
 
@@ -220,10 +224,9 @@ document.addEventListener('keydown', function(event) {
       // Subtract 3 points from the score when Josh catches the bottle
       score -= 3;
       if (score < 0) {
-        score = 0;
+        score = 0;    
       }
-    
-  
+
       bottleY = -bottleHeight;
       bottleX = Math.random() * (canvas.width - bottleWidth); 
     }
@@ -246,7 +249,6 @@ document.addEventListener('keydown', function(event) {
         requestAnimationFrame(animate);
       } else {
         if (gameWin) {
-  
           ctx.font = '60px Arial';
           ctx.fillStyle = 'white';
           ctx.fillText('Happy Birthday Josh!', 300, 300);
@@ -304,7 +306,6 @@ startGame = () => {
     title.style.display = 'none';
 
     hideInstructions();
-   
 
   }
 }
@@ -348,3 +349,20 @@ instructionsButton.addEventListener('click', toggleInstructions);
 drawBackground(); 
 animate();
 
+// ipad game controls
+document.addEventListener('touchstart', function(event) {
+  if (event.touches[0].clientX < canvas.width / 2) {
+    joshX -= 70;
+  } else {
+    joshX += 70;
+  }
+}
+);
+
+// The player touches the top half of the screen to jump
+document.addEventListener('touchstart', function(event) {
+  if (event.touches[0].clientY < canvas.height / 2) {
+    handleJump();
+  }
+}
+);
