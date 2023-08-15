@@ -10,5 +10,5 @@
 Written in JavaScript, HTML5, and CSS3
 ## Play this game
 Want to play this game, feel free to [try](https://lizsalako.github.io/Birthday-game/)!
-## It's also touchscreen
-Players can use their iPad and tablet devices to play. 
+## Available for touchscreen devices
+Players can use their iPad and tablet devices to play. Touch the screen right and left below of the gameplay to move left and right. Touch anywhere in the middle to jump to collect present faster.
