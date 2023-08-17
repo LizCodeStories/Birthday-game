@@ -1,3 +1,4 @@
+// By Elizabeth Salako and this is dedicated to my brother
 let gameStarted = false;
 let gameRunning = false;
 let josh;
@@ -17,7 +18,7 @@ canvas.style.background = 'cover no-repeat, center center';
 
 // Drawing all the images
 const background = new Image();
-background.src = 'IMG_0382 2.jpg';
+background.src = 'IMG_1353.JPG';
 const backgroundWidth = 1260;
 const backgroundHeight = 790;
 
@@ -32,20 +33,26 @@ const joshGravity = 1;
 const joshJumpForce = -30;
 
 const presentImage = new Image();
-presentImage.src = 'Present.png';
+presentImage.src = 'IMG_1255.PNG';
 const presentWidth = 100;
 const presentHeight = 100;
 let presentY = 0;
 let presentX = 800;
-const presentSpeed = 6;
+const presentSpeed = 5;
 
 const bottleImage = new Image();
-bottleImage.src = 'bottle2.png';
+bottleImage.src = 'bottle.png';
 const bottleWidth = 30;
 const bottleHeight = 100;
 let bottleY = 0;
 let bottleX = 800;
 const bottleSpeed = 8;
+
+
+const birthdayText = new Image();
+birthdayText.src = 'B72A6123-D5F8-4E35-9B1D-1D8E7031B201.PNG';
+const birthdayTextWidth = 300;
+const birthdayTextHeight = 200;
 
 
  drawBackground = () => {
@@ -111,12 +118,11 @@ const bottleSpeed = 8;
       joshY + joshHeight > presentY &&
       joshX < presentX + presentWidth &&
       joshX + joshWidth > presentX
-    ) 
-    presentVisible = true;
-    {
-    
+    ) {
+      presentVisible = true;
       collectPresent();
     }
+    
   
     
     if (presentY > canvas.height) {
@@ -153,17 +159,21 @@ const bottleSpeed = 8;
       gameOver = true;
     }
   }
-  
-  
-  updateJosh = () => {
-    
-    joshYSpeed += joshGravity;
-    joshY += joshYSpeed;
 
-    if (joshY > canvas.height - joshHeight) {
-      joshY = canvas.height - joshHeight;
+  
+  // 
+  updateJosh = () => { // Update Josh's position
+    
+    joshYSpeed += joshGravity; // Gravity
+    joshY += joshYSpeed; // Apply speed to position
+
+
+
+    if (joshY > canvas.height - joshHeight) { // If Josh is falling below floor line
+      joshY = canvas.height - joshHeight; // Bring Josh back to the floor
       joshYSpeed = 0;
     }
+
   
  
     if (joshX < 0) {
@@ -222,7 +232,7 @@ document.addEventListener('keydown', function(event) {
     // Villan collision
      handleBottleCollision = () => {
       // Subtract 3 points from the score when Josh catches the bottle
-      score -= 3;
+      score -= 5;
       if (score < 0) {
         score = 0;    
       }
@@ -232,7 +242,8 @@ document.addEventListener('keydown', function(event) {
     }
     
     
-
+    
+// Animate the game
     animate = () => {
       if (!gameRunning) {
         return; 
@@ -243,7 +254,9 @@ document.addEventListener('keydown', function(event) {
     
       if (!gameOver && !gameWin) {
         drawJosh();
+
         drawPresent();
+        
         drawBottle();
         updateJosh();
         requestAnimationFrame(animate);
@@ -251,7 +264,7 @@ document.addEventListener('keydown', function(event) {
         if (gameWin) {
           ctx.font = '60px Arial';
           ctx.fillStyle = 'white';
-          ctx.fillText('Happy Birthday Josh!', 300, 300);
+          ctx.fillText('Happy Birthday!', 400, 300);
         } else {
           if (gameOver) {
           drawGameOverText();
@@ -366,3 +379,5 @@ document.addEventListener('touchstart', function(event) {
   }
 }
 );
+
+
